@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                build 'PES1UG21CS453-1'
+                build 'PES2UG21CS641-1'
                 sh 'g++ main.cpp -o output'
             }
         }
@@ -14,12 +14,13 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'deploy'
+                sh 'echo "Deploying..."'
+                sh './non_existent_deploy_script.sh'
             }
         }
     }
-    post{
-        failure{
+    post {
+        failure {
             error 'Pipeline failed'
         }
     }
